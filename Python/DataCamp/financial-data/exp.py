@@ -1,11 +1,14 @@
-from pandas_datareader.data import DataReader
-from datetime import date 
+from pandas_datareader import data
+import matplotlib.pyplot as plt
+import pandas as pd
 
-start = date (2017, 1, 1)
-end = date (2019, 8, 21)
 
-ticker = 'GOOG'
+start = '2017-01-01'
+end = '2019-08-21'
+
+
+tickers = ['AAPL', 'MSFT', '^GSPC']
 data_source = 'google'
-stock_data = DataReader(ticker, data_source, start, end)
+panel_data = data.DataReader('INPX', 'google', start, end)
 
-stock_data.info()
+panel_data.to_frame().head(9)
